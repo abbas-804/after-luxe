@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFTER LUXE — Crystal Streetwear</title>
+<meta name="description" content="AFTER LUXE — crystal-clear streetwear. Premium hoodies and tees, cut once and rarely restocked.">
+
+<!-- Favicon / browser tab -->
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+
+<!-- Social sharing (Open Graph / Facebook / iMessage / WhatsApp) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AFTER LUXE — Crystal Streetwear">
+<meta property="og:description" content="Crystal-clear streetwear, made to last. Premium hoodies and tees, cut once and rarely restocked.">
+<meta property="og:image" content="logo.png">
+<meta property="og:url" content="">
+
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AFTER LUXE — Crystal Streetwear">
+<meta name="twitter:description" content="Crystal-clear streetwear, made to last.">
+<meta name="twitter:image" content="logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky-50:#f2fafd;
+    --sky-100:#e3f5fc;
+    --sky-200:#c9ecfa;
+    --sky-300:#9fdcf5;
+    --sky-400:#63c6ec;
+    --sky-500:#2fa9d9;
+    --sky-600:#1c86b3;
+    --ink:#16232c;
+    --ink-soft:#4d616d;
+    --glass:rgba(255,255,255,0.4);
+    --glass-strong:rgba(255,255,255,0.72);
+    --glass-border:rgba(255,255,255,0.75);
+    --shadow-soft:0 10px 30px rgba(31,120,160,0.12);
+    --radius:20px;
+    --bubble-hi:rgba(255,255,255,0.9);
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 20% -10%, rgba(255,255,255,0.9) 0%, transparent 38%),
+      radial-gradient(circle at 88% 6%, var(--sky-200) 0%, transparent 42%),
+      radial-gradient(ellipse 60% 40% at 50% 22%, var(--sky-300) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 50% at 15% 70%, var(--sky-100) 0%, transparent 65%),
+      radial-gradient(ellipse 70% 45% at 85% 85%, var(--sky-200) 0%, transparent 60%),
+      linear-gradient(180deg, var(--sky-50) 0%, var(--sky-100) 35%, var(--sky-50) 70%, #ffffff 100%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  a,button,.icon-btn,.dot,.slider-arrow,.cat-card,.add-btn,.btn-crystal{cursor:pointer;}
+  button{font-family:inherit;border:none;background:none;}
+
+  /* ---------- shared crystal shard decorations ---------- */
+  .shard{
+    position:absolute;
+    width:60px;height:60px;
+    background:linear-gradient(135deg, rgba(159,220,245,.55), rgba(255,255,255,.15));
+    clip-path:polygon(50% 0%, 100% 38%, 78% 100%, 22% 100%, 0% 38%);
+    opacity:.5;
+    filter:blur(.2px);
+    animation:float 9s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-18px) rotate(8deg);}
+  }
+
+  /* ---------- header ---------- */
+  header.site-header{
+    position:sticky;top:0;z-index:500;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    padding:16px 5%;
+    background:var(--glass-strong);
+    backdrop-filter:blur(18px) saturate(160%);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    border-bottom:1px solid var(--glass-border);
+  }
+  .nav-left{display:flex;gap:28px;}
+  .nav-left a{
+    font-size:14.5px;font-weight:500;color:var(--ink-soft);
+    position:relative;padding:4px 0;
+    transition:color .25s ease;
+  }
+  .nav-left a::after{
+    content:'';position:absolute;left:0;bottom:-2px;
+    width:0%;height:2px;background:var(--sky-500);
+    transition:width .3s ease;
+  }
+  .nav-left a:hover{color:var(--ink);}
+  .nav-left a:hover::after{width:100%;}
+
+  .logo-center{
+    display:flex;align-items:center;gap:10px;justify-content:center;
+  }
+  .header-logo-img{height:46px;width:auto;display:block;transition:transform .4s ease;filter:drop-shadow(0 4px 10px rgba(31,120,160,0.18));}
+  .logo-center:hover .header-logo-img{transform:scale(1.06);}
+  .logo-text{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:21px;
+    letter-spacing:2.5px;
+    background:linear-gradient(100deg, var(--sky-600), var(--sky-400) 50%, var(--sky-600));
+    background-size:220% auto;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shimmer 6s linear infinite;
+  }
+  @keyframes shimmer{0%{background-position:0% center;}100%{background-position:220% center;}}
+  .footer-logo-img{height:56px;width:auto;display:block;margin:0 auto 14px;filter:drop-shadow(0 6px 14px rgba(31,120,160,0.15));}
+
+  .nav-right{display:flex;gap:20px;justify-content:flex-end;align-items:center;position:relative;}
+  .icon-btn{
+    width:38px;height:38px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);
+    transition:background .25s ease, color .25s ease, transform .25s ease;
+  }
+  .icon-btn:hover{background:var(--sky-100);color:var(--sky-600);transform:translateY(-2px);}
+  .icon-btn svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;}
+
+  .mini-pop{
+    position:absolute;top:48px;right:0;
+    min-width:210px;
+    background:var(--glass-strong);
+    backdrop-filter:blur(16px);
+    border:1px solid var(--glass-border);
+    border-radius:14px;
+    padding:14px 16px;
+    box-shadow:var(--shadow-soft);
+    font-size:13.5px;color:var(--ink-soft);
+    opacity:0;transform:translateY(-8px);pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  .mini-pop.open{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .mini-pop input{
+    width:100%;padding:8px 10px;border-radius:8px;
+    border:1px solid var(--sky-200);outline:none;font-size:13.5px;
+  }
+
+  /* ---------- section shell ---------- */
+  section{padding:70px 5% 40px;position:relative;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 42px;}
+  .eyebrow{
+    font-size:12px;letter-spacing:3px;text-transform:uppercase;
+    color:var(--sky-600);font-weight:600;margin-bottom:10px;display:block;
+  }
+  .section-head h2{
+    font-family:var(--font-display);font-size:clamp(26px,3.4vw,38px);
+    font-weight:700;color:var(--ink);
+  }
+  .section-head p{color:var(--ink-soft);margin-top:10px;font-size:15px;}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  /* ---------- trending slider ---------- */
+  .trending{padding-top:26px;}
+  .slider-wrap{
+    position:relative;max-width:920px;margin:0 auto;
+    height:400px;
+    border-radius:28px;
+    background:var(--glass);
+    backdrop-filter:blur(14px);
+    border:1px solid var(--glass-border);
+    box-shadow:var(--shadow-soft);
+    overflow:hidden;
+  }
+  .slide{
+    position:absolute;inset:0;
+    display:grid;grid-template-columns:1fr 1fr;align-items:center;
+    padding:0 50px;
+    opacity:0;
+    transform:translateX(60px);
+    transition:opacity .6s ease, transform .6s ease;
+    pointer-events:none;
+  }
+  .slide.active{opacity:1;transform:translateX(0);pointer-events:auto;}
+  .slide.leaving{opacity:0;transform:translateX(-60px);}
+  .slide-art{display:flex;align-items:center;justify-content:center;position:relative;height:100%;}
+  .slide-art .glass-bubble{width:230px;height:230px;}
+  .slide-art .garment-icon{width:150px;height:150px;filter:drop-shadow(0 18px 24px rgba(22,35,44,0.18));}
+  .slide-info .badge{
+    display:inline-block;font-size:11px;letter-spacing:2px;font-weight:600;
+    color:var(--sky-600);background:var(--sky-100);padding:5px 12px;border-radius:999px;margin-bottom:14px;
+  }
+  .slide-info h3{font-family:var(--font-display);font-size:26px;margin-bottom:10px;}
+  .slide-info p.desc{color:var(--ink-soft);font-size:14.5px;line-height:1.6;margin-bottom:16px;max-width:320px;}
+  .slide-info .price{font-family:var(--font-display);font-size:22px;color:var(--sky-600);font-weight:700;margin-bottom:18px;}
+  .btn-crystal{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:999px;
+    background:linear-gradient(120deg, var(--sky-500), var(--sky-600));
+    color:#fff;font-weight:600;font-size:13.5px;letter-spacing:.4px;
+    box-shadow:0 8px 20px rgba(47,169,217,0.35);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-crystal:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(47,169,217,0.45);}
+
+  .slider-dots{
+    display:flex;gap:8px;justify-content:center;margin-top:20px;
+  }
+  .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--sky-200);
+    transition:background .3s ease, transform .3s ease;
+  }
+  .dot.active{background:var(--sky-600);transform:scale(1.3);}
+
+  .slider-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:42px;height:42px;border-radius:50%;
+    background:var(--glass-strong);border:1px solid var(--glass-border);
+    display:flex;align-items:center;justify-content:center;color:var(--ink-soft);
+    z-index:5;transition:background .25s ease,color .25s ease;
+  }
+  .slider-arrow:hover{background:var(--sky-500);color:#fff;}
+  .slider-arrow.prev{left:14px;}
+  .slider-arrow.next{right:14px;}
+
+  /* ---------- garment icon ---------- */
+  .garment-icon{display:block;}
+  .garment-fill{fill:var(--gcolor,#7ec8e3);}
+  .garment-shade{fill:rgba(0,0,0,0.14);}
+  .garment-outline{fill:none;stroke:rgba(0,0,0,0.12);stroke-width:1.4;}
+
+  /* ---------- crystal glass bubble ---------- */
+  .glass-bubble{
+    position:relative;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:
+      radial-gradient(circle at 30% 24%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.05) 30%, transparent 55%),
+      radial-gradient(circle at 72% 78%, rgba(255,255,255,0.35) 0%, transparent 35%),
+      linear-gradient(160deg, rgba(255,255,255,0.55), rgba(255,255,255,0.08) 60%);
+    border:1px solid rgba(255,255,255,0.85);
+    box-shadow:
+      inset 0 2px 10px rgba(255,255,255,0.9),
+      inset 0 -14px 22px rgba(31,120,160,0.10),
+      0 18px 30px rgba(31,120,160,0.16);
+    backdrop-filter:blur(2px);
+    -webkit-backdrop-filter:blur(2px);
+  }
+  .glass-bubble::after{
+    content:'';position:absolute;top:12%;left:16%;
+    width:22%;height:16%;border-radius:50%;
+    background:rgba(255,255,255,0.85);
+    filter:blur(2px);
+  }
+
+  /* ---------- product grid ---------- */
+  .grid-products{
+    max-width:1180px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(auto-fill, minmax(230px,1fr));
+    gap:26px;
+  }
+  .card{
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    border-radius:var(--radius);
+    padding:26px 20px 22px;
+    text-align:center;
+    backdrop-filter:blur(12px);
+    box-shadow:var(--shadow-soft);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(140deg, rgba(255,255,255,.55), rgba(255,255,255,0) 60%);
+    opacity:0;transition:opacity .35s ease;
+  }
+  .card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 22px 40px rgba(31,120,160,0.22);}
+  .card:hover::before{opacity:1;}
+  .card .art{height:150px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .card .art .glass-bubble{width:140px;height:140px;transition:transform .4s ease;}
+  .card .art .garment-icon{width:90px;height:90px;}
+  .card:hover .art .glass-bubble{transform:translateY(-6px) rotate(-3deg);}
+  .card .tag{
+    position:absolute;top:16px;left:16px;
+    font-size:10px;letter-spacing:1.5px;font-weight:700;text-transform:uppercase;
+    color:#fff;background:var(--sky-500);padding:4px 9px;border-radius:999px;
+  }
+  .card .tag.excl{background:var(--ink);}
+  .card h4{font-size:15.5px;font-weight:600;margin-bottom:6px;}
+  .card p.card-desc{font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin-bottom:12px;min-height:36px;}
+  .card .price{font-family:var(--font-display);font-weight:700;color:var(--sky-600);font-size:16px;margin-bottom:12px;}
+  .card .add-btn{
+    width:100%;padding:9px 0;border-radius:10px;
+    background:var(--sky-50);color:var(--sky-600);font-weight:600;font-size:12.5px;
+    border:1px solid var(--sky-200);
+    transition:background .25s ease, color .25s ease;
+  }
+  .card .add-btn:hover{background:var(--sky-500);color:#fff;}
+
+  /* ---------- category section ---------- */
+  .grid-categories{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:24px;
+  }
+  .cat-card{
+    position:relative;height:220px;border-radius:24px;overflow:hidden;
+    display:flex;align-items:flex-end;padding:22px;
+    background:linear-gradient(150deg, var(--cat-a), var(--cat-b));
+    box-shadow:var(--shadow-soft);
+    transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .cat-card:hover{transform:translateY(-8px);}
+  .cat-card .cat-icon{
+    position:absolute;top:18px;right:18px;width:46px;height:46px;
+    opacity:.9;transition:transform .5s ease;
+  }
+  .cat-card:hover .cat-icon{transform:rotate(20deg) scale(1.1);}
+  .cat-card .cat-label h4{
+    color:#fff;font-family:var(--font-display);font-size:19px;font-weight:700;
+    text-shadow:0 2px 10px rgba(0,0,0,0.15);
+  }
+  .cat-card .cat-label span{
+    color:rgba(255,255,255,0.85);font-size:12.5px;
+  }
+  .cat-card .shine{
+    position:absolute;top:0;left:-60%;width:40%;height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+    transform:skewX(-20deg);
+    transition:left .8s ease;
+  }
+  .cat-card:hover .shine{left:130%;}
+
+  /* ---------- toast ---------- */
+  .toast{
+    position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;
+    font-size:13.5px;font-weight:500;box-shadow:0 12px 30px rgba(0,0,0,.25);
+    opacity:0;pointer-events:none;transition:opacity .3s ease, transform .3s ease;
+    z-index:9998;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  footer{
+    margin-top:60px;padding:36px 5% 26px;text-align:center;
+    color:var(--ink-soft);font-size:12.5px;
+    border-top:1px solid var(--sky-100);
+  }
+
+  @media (max-width:880px){
+    header.site-header{grid-template-columns:auto auto;grid-template-areas:"logo icons" "nav nav";row-gap:10px;}
+    .logo-center{grid-area:logo;justify-content:flex-start;}
+    .nav-right{grid-area:icons;}
+    .nav-left{grid-area:nav;justify-content:center;flex-wrap:wrap;gap:16px;}
+    .slide{grid-template-columns:1fr;text-align:center;padding:20px 26px;}
+    .slide-art{display:none;}
+    .slider-wrap{height:300px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<!-- ================= SVG DEFS (garment icons + logo) ================= -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="icon-hoodie" viewBox="0 0 100 100">
+      <path class="garment-fill" d="M30 20 Q50 2 70 20 L87 33 L76 47 L70 40 L70 94 L30 94 L30 40 L24 47 L13 33 Z"/>
+      <path class="garment-outline" d="M30 20 Q50 2 70 20 L87 33 L76 47 L70 40 L70 94 L30 94 L30 40 L24 47 L13 33 Z"/>
+      <rect class="garment-shade" x="37" y="58" width="26" height="17" rx="5"/>
+      <line x1="45" y1="23" x2="43" y2="40" stroke="rgba(0,0,0,0.28)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="55" y1="23" x2="57" y2="40" stroke="rgba(0,0,0,0.28)" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="icon-tshirt" viewBox="0 0 100 100">
+      <path class="garment-fill" d="M35 8 L50 17 L65 8 L83 19 L74 35 L65 28 L65 92 L35 92 L35 28 L26 35 L17 19 Z"/>
+      <path class="garment-outline" d="M35 8 L50 17 L65 8 L83 19 L74 35 L65 28 L65 92 L35 92 L35 28 L26 35 L17 19 Z"/>
+      <path d="M42 10 Q50 20 58 10" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.6"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <nav class="nav-left">
+    <a href="#home">Home</a>
+    <a href="#hoodies">Hoodie</a>
+    <a href="#tshirts">T-Shirts</a>
+    <a href="#tracking">Order Tracking</a>
+  </nav>
+
+  <a href="#home" class="logo-center">
+    <img src="logo.png" alt="After Luxe" class="header-logo-img">
+  </a>
+
+  <div class="nav-right">
+    <button class="icon-btn" id="searchBtn" aria-label="Search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <button class="icon-btn" id="cartBtn" aria-label="Cart">
+      <svg viewBox="0 0 24 24"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>
+    </button>
+    <button class="icon-btn" id="accountBtn" aria-label="Account">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+    </button>
+
+    <div class="mini-pop" id="searchPop">
+      <input type="text" placeholder="Search hoodies, tees...">
+    </div>
+    <div class="mini-pop" id="cartPop">Your cart is empty.<br>Start adding some crystal essentials.</div>
+    <div class="mini-pop" id="accountPop">Sign in to track orders and save favorites.</div>
+  </div>
+</header>
+
+<!-- ================= TRENDING SLIDER ================= -->
+<section class="trending" id="home">
+  <div class="section-head reveal">
+    <span class="eyebrow">Trending Now</span>
+    <h2>This Week's Crystal Picks</h2>
+    <p>Seven pieces our community keeps coming back for.</p>
+  </div>
+
+  <div class="slider-wrap reveal" id="sliderWrap">
+    <button class="slider-arrow prev" id="prevBtn" aria-label="Previous">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="slider-arrow next" id="nextBtn" aria-label="Next">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <!-- slides injected by JS -->
+  </div>
+
+  <div class="slider-dots" id="sliderDots"></div>
+</section>
+
+<!-- ================= EXCLUSIVE PRODUCTS ================= -->
+<section id="exclusive">
+  <div class="section-head reveal">
+    <span class="eyebrow">Exclusive Collection</span>
+    <h2>Limited Crystal Drops</h2>
+    <p>Small-batch hoodies and tees, cut once and rarely restocked.</p>
+  </div>
+  <div class="grid-products" id="exclusiveGrid"></div>
+</section>
+
+<!-- ================= SHOP BY CATEGORY ================= -->
+<section id="categories">
+  <div class="section-head reveal">
+    <span class="eyebrow">Shop By Category</span>
+    <h2>Find Your Fit</h2>
+  </div>
+  <div class="grid-categories reveal" id="categoryGrid"></div>
+</section>
+
+<footer id="tracking">
+  <img src="logo.png" alt="After Luxe" class="footer-logo-img">
+  Crystal-clear streetwear, made to last. &copy; 2026 After Luxe. All rights reserved.<br>
+  Order Tracking · Shipping &amp; Returns · Contact
+</footer>
+
+<script>
+/* ===================== DATA ===================== */
+const trending = [
+  {type:'hoodie', color:'#63c6ec', name:'Glacier Blue Pullover Hoodie', desc:'Brushed fleece hoodie in a soft glacier-blue wash, built for everyday layering.', price:58, badge:'Best Seller'},
+  {type:'hoodie', color:'#20242b', name:'Midnight Onyx Hoodie', desc:'Heavyweight hoodie with a relaxed drop-shoulder fit and roomy kangaroo pocket.', price:62, badge:'Staff Pick'},
+  {type:'tshirt', color:'#f5f7f8', name:'Cloudwhite Essential Tee', desc:'Ultra-soft combed cotton tee in clean cloudwhite, our everyday staple.', price:32, badge:'Everyday'},
+  {type:'hoodie', color:'#9aa5b1', name:'Slate Grey Oversized Hoodie', desc:'Oversized silhouette in slate grey with ribbed cuffs for a boxy streetwear fit.', price:65, badge:'Oversized'},
+  {type:'tshirt', color:'#eef3f5', name:'Frost Crystal Graphic Tee', desc:'Clean white tee featuring a subtle crystal-facet print across the chest.', price:36, badge:'New'},
+  {type:'hoodie', color:'#1f2f4d', name:'Storm Navy Zip Hoodie', desc:'Full-zip hoodie in storm navy with a soft brushed fleece lining.', price:68, badge:'Warm'},
+  {type:'tshirt', color:'#cbb59a', name:'Sand Beige Boxy Tee', desc:'Boxy-cut tee in warm sand beige, garment-dyed for a lived-in feel.', price:30, badge:'Relaxed'}
+];
+
+const exclusive = [
+  {type:'hoodie', color:'#111318', name:'Obsidian Crystal-Wash Hoodie', desc:'Limited acid-wash black hoodie with a crystalline fade across the front panel.', price:95},
+  {type:'hoodie', color:'#a9c9d9', name:'Ice Sky Premium Hoodie', desc:'Premium heavyweight fleece in a soft ice-sky tone with reinforced seams.', price:88},
+  {type:'tshirt', color:'#d7e6ee', name:'Aurora Fade Oversized Tee', desc:'Oversized tee with a gentle aurora-blue gradient dye on heavyweight cotton.', price:52},
+  {type:'hoodie', color:'#232a33', name:'Diamond Cut Heavyweight Hoodie', desc:'Structured heavyweight hoodie with a sharp, faceted seam pattern down the sleeves.', price:110},
+  {type:'hoodie', color:'#e8eef2', name:'Pearl Mist Cropped Hoodie', desc:'Cropped-fit hoodie in pearl mist with a matte drawcord and clean trims.', price:72},
+  {type:'tshirt', color:'#14181d', name:'Noir Reflective Tee', desc:'Black tee with a reflective crystal-facet print that catches light at night.', price:58},
+  {type:'hoodie', color:'#7ec8e3', name:'Glacier Split Hoodie', desc:'Split-tone hoodie blending two shades of blue across a boxy silhouette.', price:98},
+  {type:'tshirt', color:'#b9c6cf', name:'Platinum Grey Longline Tee', desc:'Longline tee in platinum grey with a dropped hem for a modern streetwear cut.', price:46},
+  {type:'hoodie', color:'#0a3d5c', name:'Crystal Core Zip-Up', desc:'Flagship zip hoodie in deep crystal-blue with a quilted inner lining.', price:115},
+  {type:'hoodie', color:'#dbe9f0', name:'Frostbite Oversized Hoodie', desc:'Oversized fit hoodie in frostbite white-blue with dropped, extended sleeves.', price:92},
+  {type:'tshirt', color:'#f0c6d0', name:'Quartz Pink Essential Tee', desc:'Soft quartz-pink tee in lightweight cotton, cut for a relaxed everyday fit.', price:40},
+  {type:'hoodie', color:'#05070a', name:'Eclipse Black Hoodie', desc:'Our flagship piece: ultra-heavyweight black hoodie with tonal crystal stitching.', price:120}
+];
+
+const categories = [
+  {name:'Hoodies', tag:'24 styles', icon:'icon-hoodie', a:'#63c6ec', b:'#1c86b3'},
+  {name:'T-Shirts', tag:'19 styles', icon:'icon-tshirt', a:'#9fdcf5', b:'#2fa9d9'},
+  {name:'Oversized Fits', tag:'Roomy & relaxed', icon:'icon-hoodie', a:'#4d616d', b:'#16232c'},
+  {name:'Limited Drops', tag:'Restocks rarely', icon:'icon-tshirt', a:'#1c86b3', b:'#05070a'}
+];
+
+/* ===================== HELPERS ===================== */
+function garmentSVG(type, color, size){
+  return `<svg class="garment-icon" viewBox="0 0 100 100" width="${size}" height="${size}" style="--gcolor:${color}">
+    <use href="#icon-${type}"></use>
+  </svg>`;
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+/* ===================== BUILD SLIDER ===================== */
+const sliderWrap = document.getElementById('sliderWrap');
+const dotsWrap = document.getElementById('sliderDots');
+
+trending.forEach((p,i)=>{
+  const slide = document.createElement('div');
+  slide.className = 'slide' + (i===0 ? ' active' : '');
+  slide.innerHTML = `
+    <div class="slide-art"><div class="glass-bubble">${garmentSVG(p.type,p.color,150)}</div></div>
+    <div class="slide-info">
+      <span class="badge">${p.badge}</span>
+      <h3>${p.name}</h3>
+      <p class="desc">${p.desc}</p>
+      <div class="price">$${p.price.toFixed(2)}</div>
+      <button class="btn-crystal add-to-cart">Add to Cart</button>
+    </div>`;
+  sliderWrap.appendChild(slide);
+
+  const dot = document.createElement('div');
+  dot.className = 'dot' + (i===0 ? ' active' : '');
+  dot.addEventListener('click', ()=>goToSlide(i));
+  dotsWrap.appendChild(dot);
+});
+
+const slides = Array.from(document.querySelectorAll('.slide'));
+const dots = Array.from(document.querySelectorAll('.dot'));
+let current = 0;
+let sliderTimer;
+
+function goToSlide(idx){
+  slides[current].classList.remove('active');
+  slides[current].classList.add('leaving');
+  setTimeout(()=>slides[current].classList.remove('leaving'), 650);
+  dots[current].classList.remove('active');
+  current = idx;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+}
+
+function nextSlide(){ goToSlide((current+1) % slides.length); }
+function prevSlide(){ goToSlide((current-1+slides.length) % slides.length); }
+
+function startAutoSlide(){
+  sliderTimer = setInterval(nextSlide, 3000);
+}
+function stopAutoSlide(){ clearInterval(sliderTimer); }
+
+startAutoSlide();
+sliderWrap.addEventListener('mouseenter', stopAutoSlide);
+sliderWrap.addEventListener('mouseleave', startAutoSlide);
+document.getElementById('nextBtn').addEventListener('click', ()=>{ nextSlide(); stopAutoSlide(); startAutoSlide(); });
+document.getElementById('prevBtn').addEventListener('click', ()=>{ prevSlide(); stopAutoSlide(); startAutoSlide(); });
+
+/* ===================== BUILD EXCLUSIVE GRID ===================== */
+const exclusiveGrid = document.getElementById('exclusiveGrid');
+exclusive.forEach(p=>{
+  const card = document.createElement('div');
+  card.className = 'card reveal';
+  card.innerHTML = `
+    <span class="tag excl">Exclusive</span>
+    <div class="art"><div class="glass-bubble">${garmentSVG(p.type,p.color,90)}</div></div>
+    <h4>${p.name}</h4>
+    <p class="card-desc">${p.desc}</p>
+    <div class="price">$${p.price.toFixed(2)}</div>
+    <button class="add-btn add-to-cart">Add to Cart</button>`;
+  exclusiveGrid.appendChild(card);
+});
+
+/* ===================== BUILD CATEGORY GRID ===================== */
+const categoryGrid = document.getElementById('categoryGrid');
+categories.forEach(c=>{
+  const card = document.createElement('div');
+  card.className = 'cat-card';
+  card.style.setProperty('--cat-a', c.a);
+  card.style.setProperty('--cat-b', c.b);
+  card.innerHTML = `
+    <div class="shine"></div>
+    <svg class="cat-icon" viewBox="0 0 100 100" style="--gcolor:rgba(255,255,255,0.9)"><use href="#${c.icon}"></use></svg>
+    <div class="cat-label">
+      <h4>${c.name}</h4>
+      <span>${c.tag}</span>
+    </div>`;
+  card.addEventListener('click', ()=>showToast(`Browsing ${c.name}...`));
+  categoryGrid.appendChild(card);
+});
+
+/* ===================== ADD TO CART TOAST ===================== */
+document.addEventListener('click', (e)=>{
+  if(e.target.closest('.add-to-cart')){
+    showToast('Added to cart ✓');
+  }
+});
+
+/* ===================== HEADER MINI POPUPS ===================== */
+function wirePop(btnId, popId){
+  const btn = document.getElementById(btnId);
+  const pop = document.getElementById(popId);
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const isOpen = pop.classList.contains('open');
+    document.querySelectorAll('.mini-pop').forEach(p=>p.classList.remove('open'));
+    if(!isOpen) pop.classList.add('open');
+  });
+}
+wirePop('searchBtn','searchPop');
+wirePop('cartBtn','cartPop');
+wirePop('accountBtn','accountPop');
+document.addEventListener('click', ()=>document.querySelectorAll('.mini-pop').forEach(p=>p.classList.remove('open')));
+document.querySelectorAll('.mini-pop').forEach(p=>p.addEventListener('click', e=>e.stopPropagation()));
+
+/* ===================== SCROLL REVEAL ===================== */
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+</script>
+
+</body>
+</html>
