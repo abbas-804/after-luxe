@@ -55,13 +55,10 @@
     font-family:var(--font-body);
     color:var(--ink);
     background:
-      radial-gradient(circle at 20% -10%, rgba(255,255,255,0.9) 0%, transparent 38%),
-      radial-gradient(circle at 88% 6%, var(--sky-200) 0%, transparent 42%),
-      radial-gradient(ellipse 60% 40% at 50% 22%, var(--sky-300) 0%, transparent 70%),
-      radial-gradient(ellipse 80% 50% at 15% 70%, var(--sky-100) 0%, transparent 65%),
-      radial-gradient(ellipse 70% 45% at 85% 85%, var(--sky-200) 0%, transparent 60%),
+      radial-gradient(circle at 20% -10%, rgba(255,255,255,0.9) 0%, transparent 40%),
+      radial-gradient(ellipse 70% 45% at 85% 10%, var(--sky-200) 0%, transparent 55%),
+      radial-gradient(ellipse 80% 50% at 15% 75%, var(--sky-100) 0%, transparent 65%),
       linear-gradient(180deg, var(--sky-50) 0%, var(--sky-100) 35%, var(--sky-50) 70%, #ffffff 100%);
-    background-attachment:fixed;
     overflow-x:hidden;
   }
 
@@ -70,32 +67,16 @@
   a,button,.icon-btn,.dot,.slider-arrow,.cat-card,.add-btn,.btn-crystal{cursor:pointer;}
   button{font-family:inherit;border:none;background:none;}
 
-  /* ---------- shared crystal shard decorations ---------- */
-  .shard{
-    position:absolute;
-    width:60px;height:60px;
-    background:linear-gradient(135deg, rgba(159,220,245,.55), rgba(255,255,255,.15));
-    clip-path:polygon(50% 0%, 100% 38%, 78% 100%, 22% 100%, 0% 38%);
-    opacity:.5;
-    filter:blur(.2px);
-    animation:float 9s ease-in-out infinite;
-    pointer-events:none;
-  }
-  @keyframes float{
-    0%,100%{transform:translateY(0) rotate(0deg);}
-    50%{transform:translateY(-18px) rotate(8deg);}
-  }
-
   /* ---------- header ---------- */
   header.site-header{
     position:sticky;top:0;z-index:500;
     display:grid;
     grid-template-columns:1fr auto 1fr;
     align-items:center;
-    padding:16px 5%;
-    background:var(--glass-strong);
-    backdrop-filter:blur(18px) saturate(160%);
-    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    padding:14px 5%;
+    background:linear-gradient(180deg, rgba(230,246,253,0.85), rgba(255,255,255,0.7));
+    backdrop-filter:blur(10px) saturate(140%);
+    -webkit-backdrop-filter:blur(10px) saturate(140%);
     border-bottom:1px solid var(--glass-border);
   }
   .nav-left{display:flex;gap:28px;}
@@ -113,25 +94,23 @@
   .nav-left a:hover::after{width:100%;}
 
   .logo-center{
-    display:flex;align-items:center;gap:10px;justify-content:center;
+    display:flex;align-items:center;justify-content:center;
   }
-  .header-logo-img{height:46px;width:auto;display:block;transition:transform .4s ease;filter:drop-shadow(0 4px 10px rgba(31,120,160,0.18));}
-  .logo-center:hover .header-logo-img{transform:scale(1.06);}
-  .logo-text{
-    font-family:var(--font-display);
-    font-weight:700;
-    font-size:21px;
-    letter-spacing:2.5px;
-    background:linear-gradient(100deg, var(--sky-600), var(--sky-400) 50%, var(--sky-600));
-    background-size:220% auto;
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    animation:shimmer 6s linear infinite;
+  .logo-chip{
+    display:flex;align-items:center;justify-content:center;
+    padding:5px 16px;
+    border-radius:999px;
+    background:linear-gradient(150deg, #16232c, #2c3e4a);
+    box-shadow:0 6px 16px rgba(22,35,44,0.28), inset 0 1px 0 rgba(255,255,255,0.12);
+    transition:transform .3s ease;
   }
-  @keyframes shimmer{0%{background-position:0% center;}100%{background-position:220% center;}}
+  .logo-center:hover .logo-chip{transform:scale(1.05);}
+  .header-logo-img{height:36px;width:auto;display:block;}
   .footer-logo-img{height:56px;width:auto;display:block;margin:0 auto 14px;filter:drop-shadow(0 6px 14px rgba(31,120,160,0.15));}
 
   .nav-right{display:flex;gap:20px;justify-content:flex-end;align-items:center;position:relative;}
   .icon-btn{
+    position:relative;
     width:38px;height:38px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;
     color:var(--ink-soft);
@@ -144,7 +123,8 @@
     position:absolute;top:48px;right:0;
     min-width:210px;
     background:var(--glass-strong);
-    backdrop-filter:blur(16px);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
     border:1px solid var(--glass-border);
     border-radius:14px;
     padding:14px 16px;
@@ -158,6 +138,40 @@
     width:100%;padding:8px 10px;border-radius:8px;
     border:1px solid var(--sky-200);outline:none;font-size:13.5px;
   }
+
+  .cart-badge{
+    position:absolute;top:2px;right:2px;
+    min-width:16px;height:16px;padding:0 4px;
+    border-radius:999px;background:var(--sky-600);color:#fff;
+    font-size:10px;font-weight:700;line-height:16px;text-align:center;
+  }
+  .cart-badge.zero{display:none;}
+
+  .search-results{max-height:260px;overflow-y:auto;margin-top:4px;}
+  .search-results .sr-item{
+    display:flex;justify-content:space-between;gap:10px;
+    padding:8px 4px;border-top:1px solid var(--sky-100);
+    cursor:pointer;font-size:13px;
+  }
+  .search-results .sr-item:hover{color:var(--sky-600);}
+  .search-results .sr-empty{padding:8px 4px;color:var(--ink-soft);font-style:italic;}
+
+  .cart-pop{min-width:250px;}
+  .cart-items{max-height:220px;overflow-y:auto;}
+  .cart-line{
+    display:flex;justify-content:space-between;align-items:center;gap:8px;
+    padding:8px 0;border-bottom:1px solid var(--sky-100);
+  }
+  .cart-line .cl-name{font-size:12.5px;color:var(--ink);flex:1;}
+  .cart-line .cl-qty{font-size:12px;color:var(--ink-soft);}
+  .cart-line .cl-remove{color:var(--sky-600);font-size:12px;font-weight:600;cursor:pointer;}
+  .cart-empty{display:none;}
+  .cart-empty.show{display:block;}
+  .cart-total-row{
+    display:none;justify-content:space-between;margin-top:10px;padding-top:10px;
+    border-top:1px solid var(--sky-200);font-size:13.5px;color:var(--ink);
+  }
+  .cart-total-row.show{display:flex;}
 
   /* ---------- section shell ---------- */
   section{padding:70px 5% 40px;position:relative;}
@@ -364,6 +378,76 @@
     border-top:1px solid var(--sky-100);
   }
 
+  /* ---------- filter banner ---------- */
+  .filter-banner{
+    display:none;align-items:center;gap:10px;justify-content:center;
+    max-width:1180px;margin:0 auto 22px;
+    font-size:13.5px;color:var(--ink-soft);
+  }
+  .filter-banner.show{display:flex;}
+  .filter-banner strong{color:var(--sky-600);}
+  .filter-banner button{
+    color:var(--ink-soft);font-size:12px;text-decoration:underline;
+    transition:color .2s ease;
+  }
+  .filter-banner button:hover{color:var(--sky-600);}
+  .card.filtered-out, .slide.filtered-out{display:none !important;}
+
+  /* ---------- clickable product surfaces ---------- */
+  .card{cursor:pointer;}
+  .slide-info h3, .slide-art{cursor:pointer;}
+
+  /* ---------- product detail modal ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;z-index:2000;
+    background:rgba(22,35,44,0.45);
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;
+    transition:opacity .3s ease;
+    padding:20px;
+  }
+  .modal-overlay.open{opacity:1;pointer-events:auto;}
+  .modal-panel{
+    position:relative;
+    background:var(--glass-strong);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border:1px solid var(--glass-border);
+    border-radius:28px;
+    max-width:640px;width:100%;
+    display:grid;grid-template-columns:1fr 1fr;gap:10px;
+    padding:34px;
+    box-shadow:0 30px 60px rgba(22,35,44,0.3);
+    transform:translateY(20px) scale(.97);
+    transition:transform .3s ease;
+  }
+  .modal-overlay.open .modal-panel{transform:translateY(0) scale(1);}
+  .modal-close{
+    position:absolute;top:14px;right:14px;
+    width:32px;height:32px;border-radius:50%;
+    background:rgba(255,255,255,0.7);color:var(--ink);
+    font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;
+  }
+  .modal-art{display:flex;align-items:center;justify-content:center;}
+  .modal-art .glass-bubble{width:220px;height:220px;}
+  .modal-info{display:flex;flex-direction:column;justify-content:center;}
+  .modal-info h3{font-family:var(--font-display);font-size:24px;margin-bottom:10px;}
+  .modal-info .desc{color:var(--ink-soft);font-size:14px;line-height:1.6;margin-bottom:14px;}
+  .modal-info .price{font-family:var(--font-display);font-weight:700;color:var(--sky-600);font-size:22px;margin-bottom:16px;}
+  .modal-qty{
+    display:flex;align-items:center;gap:14px;margin-bottom:18px;
+  }
+  .modal-qty button{
+    width:30px;height:30px;border-radius:50%;background:var(--sky-100);color:var(--sky-600);
+    font-size:16px;font-weight:700;
+  }
+  .modal-qty span{font-weight:600;min-width:16px;text-align:center;}
+
+  @media (max-width:600px){
+    .modal-panel{grid-template-columns:1fr;text-align:center;}
+    .modal-art .glass-bubble{width:160px;height:160px;margin:0 auto;}
+  }
+
   @media (max-width:880px){
     header.site-header{grid-template-columns:auto auto;grid-template-areas:"logo icons" "nav nav";row-gap:10px;}
     .logo-center{grid-area:logo;justify-content:flex-start;}
@@ -406,13 +490,13 @@
 <header class="site-header">
   <nav class="nav-left">
     <a href="#home">Home</a>
-    <a href="#hoodies">Hoodie</a>
-    <a href="#tshirts">T-Shirts</a>
+    <a href="#exclusive" data-navcat="hoodies">Hoodie</a>
+    <a href="#exclusive" data-navcat="tshirts">T-Shirts</a>
     <a href="#tracking">Order Tracking</a>
   </nav>
 
   <a href="#home" class="logo-center">
-    <img src="logo.png" alt="After Luxe" class="header-logo-img">
+    <span class="logo-chip"><img src="logo-web.png" alt="After Luxe" class="header-logo-img"></span>
   </a>
 
   <div class="nav-right">
@@ -421,15 +505,23 @@
     </button>
     <button class="icon-btn" id="cartBtn" aria-label="Cart">
       <svg viewBox="0 0 24 24"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>
+      <span class="cart-badge" id="cartBadge">0</span>
     </button>
     <button class="icon-btn" id="accountBtn" aria-label="Account">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
     </button>
 
     <div class="mini-pop" id="searchPop">
-      <input type="text" placeholder="Search hoodies, tees...">
+      <input type="text" id="searchInput" placeholder="Search hoodies, tees...">
+      <div class="search-results" id="searchResults"></div>
     </div>
-    <div class="mini-pop" id="cartPop">Your cart is empty.<br>Start adding some crystal essentials.</div>
+    <div class="mini-pop cart-pop" id="cartPop">
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-empty" id="cartEmpty">Your cart is empty.<br>Start adding some crystal essentials.</div>
+      <div class="cart-total-row" id="cartTotalRow">
+        <span>Total</span><strong id="cartTotal">$0.00</strong>
+      </div>
+    </div>
     <div class="mini-pop" id="accountPop">Sign in to track orders and save favorites.</div>
   </div>
 </header>
@@ -462,6 +554,10 @@
     <h2>Limited Crystal Drops</h2>
     <p>Small-batch hoodies and tees, cut once and rarely restocked.</p>
   </div>
+  <div class="filter-banner" id="filterBanner">
+    Showing: <strong id="filterLabel">All</strong>
+    <button id="clearFilter">Clear filter ✕</button>
+  </div>
   <div class="grid-products" id="exclusiveGrid"></div>
 </section>
 
@@ -474,8 +570,28 @@
   <div class="grid-categories reveal" id="categoryGrid"></div>
 </section>
 
+<!-- ================= PRODUCT MODAL ================= -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-art"><div class="glass-bubble" id="modalBubble"></div></div>
+    <div class="modal-info">
+      <span class="badge" id="modalBadge" style="display:none;"></span>
+      <h3 id="modalTitle"></h3>
+      <p class="desc" id="modalDesc"></p>
+      <div class="price" id="modalPrice"></div>
+      <div class="modal-qty">
+        <button id="qtyMinus">&minus;</button>
+        <span id="qtyValue">1</span>
+        <button id="qtyPlus">+</button>
+      </div>
+      <button class="btn-crystal" id="modalAddBtn">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
 <footer id="tracking">
-  <img src="logo.png" alt="After Luxe" class="footer-logo-img">
+  <img src="logo-web.png" alt="After Luxe" class="footer-logo-img">
   Crystal-clear streetwear, made to last. &copy; 2026 After Luxe. All rights reserved.<br>
   Order Tracking · Shipping &amp; Returns · Contact
 </footer>
@@ -483,36 +599,38 @@
 <script>
 /* ===================== DATA ===================== */
 const trending = [
-  {type:'hoodie', color:'#63c6ec', name:'Glacier Blue Pullover Hoodie', desc:'Brushed fleece hoodie in a soft glacier-blue wash, built for everyday layering.', price:58, badge:'Best Seller'},
-  {type:'hoodie', color:'#20242b', name:'Midnight Onyx Hoodie', desc:'Heavyweight hoodie with a relaxed drop-shoulder fit and roomy kangaroo pocket.', price:62, badge:'Staff Pick'},
-  {type:'tshirt', color:'#f5f7f8', name:'Cloudwhite Essential Tee', desc:'Ultra-soft combed cotton tee in clean cloudwhite, our everyday staple.', price:32, badge:'Everyday'},
-  {type:'hoodie', color:'#9aa5b1', name:'Slate Grey Oversized Hoodie', desc:'Oversized silhouette in slate grey with ribbed cuffs for a boxy streetwear fit.', price:65, badge:'Oversized'},
-  {type:'tshirt', color:'#eef3f5', name:'Frost Crystal Graphic Tee', desc:'Clean white tee featuring a subtle crystal-facet print across the chest.', price:36, badge:'New'},
-  {type:'hoodie', color:'#1f2f4d', name:'Storm Navy Zip Hoodie', desc:'Full-zip hoodie in storm navy with a soft brushed fleece lining.', price:68, badge:'Warm'},
-  {type:'tshirt', color:'#cbb59a', name:'Sand Beige Boxy Tee', desc:'Boxy-cut tee in warm sand beige, garment-dyed for a lived-in feel.', price:30, badge:'Relaxed'}
+  {id:'t0', type:'hoodie', color:'#63c6ec', name:'Glacier Blue Pullover Hoodie', desc:'Brushed fleece hoodie in a soft glacier-blue wash, built for everyday layering.', price:58, badge:'Best Seller'},
+  {id:'t1', type:'hoodie', color:'#20242b', name:'Midnight Onyx Hoodie', desc:'Heavyweight hoodie with a relaxed drop-shoulder fit and roomy kangaroo pocket.', price:62, badge:'Staff Pick'},
+  {id:'t2', type:'tshirt', color:'#f5f7f8', name:'Cloudwhite Essential Tee', desc:'Ultra-soft combed cotton tee in clean cloudwhite, our everyday staple.', price:32, badge:'Everyday'},
+  {id:'t3', type:'hoodie', color:'#9aa5b1', name:'Slate Grey Oversized Hoodie', desc:'Oversized silhouette in slate grey with ribbed cuffs for a boxy streetwear fit.', price:65, badge:'Oversized'},
+  {id:'t4', type:'tshirt', color:'#eef3f5', name:'Frost Crystal Graphic Tee', desc:'Clean white tee featuring a subtle crystal-facet print across the chest.', price:36, badge:'New'},
+  {id:'t5', type:'hoodie', color:'#1f2f4d', name:'Storm Navy Zip Hoodie', desc:'Full-zip hoodie in storm navy with a soft brushed fleece lining.', price:68, badge:'Warm'},
+  {id:'t6', type:'tshirt', color:'#cbb59a', name:'Sand Beige Boxy Tee', desc:'Boxy-cut tee in warm sand beige, garment-dyed for a lived-in feel.', price:30, badge:'Relaxed'}
 ];
 
 const exclusive = [
-  {type:'hoodie', color:'#111318', name:'Obsidian Crystal-Wash Hoodie', desc:'Limited acid-wash black hoodie with a crystalline fade across the front panel.', price:95},
-  {type:'hoodie', color:'#a9c9d9', name:'Ice Sky Premium Hoodie', desc:'Premium heavyweight fleece in a soft ice-sky tone with reinforced seams.', price:88},
-  {type:'tshirt', color:'#d7e6ee', name:'Aurora Fade Oversized Tee', desc:'Oversized tee with a gentle aurora-blue gradient dye on heavyweight cotton.', price:52},
-  {type:'hoodie', color:'#232a33', name:'Diamond Cut Heavyweight Hoodie', desc:'Structured heavyweight hoodie with a sharp, faceted seam pattern down the sleeves.', price:110},
-  {type:'hoodie', color:'#e8eef2', name:'Pearl Mist Cropped Hoodie', desc:'Cropped-fit hoodie in pearl mist with a matte drawcord and clean trims.', price:72},
-  {type:'tshirt', color:'#14181d', name:'Noir Reflective Tee', desc:'Black tee with a reflective crystal-facet print that catches light at night.', price:58},
-  {type:'hoodie', color:'#7ec8e3', name:'Glacier Split Hoodie', desc:'Split-tone hoodie blending two shades of blue across a boxy silhouette.', price:98},
-  {type:'tshirt', color:'#b9c6cf', name:'Platinum Grey Longline Tee', desc:'Longline tee in platinum grey with a dropped hem for a modern streetwear cut.', price:46},
-  {type:'hoodie', color:'#0a3d5c', name:'Crystal Core Zip-Up', desc:'Flagship zip hoodie in deep crystal-blue with a quilted inner lining.', price:115},
-  {type:'hoodie', color:'#dbe9f0', name:'Frostbite Oversized Hoodie', desc:'Oversized fit hoodie in frostbite white-blue with dropped, extended sleeves.', price:92},
-  {type:'tshirt', color:'#f0c6d0', name:'Quartz Pink Essential Tee', desc:'Soft quartz-pink tee in lightweight cotton, cut for a relaxed everyday fit.', price:40},
-  {type:'hoodie', color:'#05070a', name:'Eclipse Black Hoodie', desc:'Our flagship piece: ultra-heavyweight black hoodie with tonal crystal stitching.', price:120}
+  {id:'e0', type:'hoodie', color:'#111318', name:'Obsidian Crystal-Wash Hoodie', desc:'Limited acid-wash black hoodie with a crystalline fade across the front panel.', price:95, cat:['hoodies']},
+  {id:'e1', type:'hoodie', color:'#a9c9d9', name:'Ice Sky Premium Hoodie', desc:'Premium heavyweight fleece in a soft ice-sky tone with reinforced seams.', price:88, cat:['hoodies']},
+  {id:'e2', type:'tshirt', color:'#d7e6ee', name:'Aurora Fade Oversized Tee', desc:'Oversized tee with a gentle aurora-blue gradient dye on heavyweight cotton.', price:52, cat:['tshirts','oversized']},
+  {id:'e3', type:'hoodie', color:'#232a33', name:'Diamond Cut Heavyweight Hoodie', desc:'Structured heavyweight hoodie with a sharp, faceted seam pattern down the sleeves.', price:110, cat:['hoodies']},
+  {id:'e4', type:'hoodie', color:'#e8eef2', name:'Pearl Mist Cropped Hoodie', desc:'Cropped-fit hoodie in pearl mist with a matte drawcord and clean trims.', price:72, cat:['hoodies']},
+  {id:'e5', type:'tshirt', color:'#14181d', name:'Noir Reflective Tee', desc:'Black tee with a reflective crystal-facet print that catches light at night.', price:58, cat:['tshirts']},
+  {id:'e6', type:'hoodie', color:'#7ec8e3', name:'Glacier Split Hoodie', desc:'Split-tone hoodie blending two shades of blue across a boxy silhouette.', price:98, cat:['hoodies']},
+  {id:'e7', type:'tshirt', color:'#b9c6cf', name:'Platinum Grey Longline Tee', desc:'Longline tee in platinum grey with a dropped hem for a modern streetwear cut.', price:46, cat:['tshirts','oversized']},
+  {id:'e8', type:'hoodie', color:'#0a3d5c', name:'Crystal Core Zip-Up', desc:'Flagship zip hoodie in deep crystal-blue with a quilted inner lining.', price:115, cat:['hoodies','limited']},
+  {id:'e9', type:'hoodie', color:'#dbe9f0', name:'Frostbite Oversized Hoodie', desc:'Oversized fit hoodie in frostbite white-blue with dropped, extended sleeves.', price:92, cat:['hoodies','oversized']},
+  {id:'e10', type:'tshirt', color:'#f0c6d0', name:'Quartz Pink Essential Tee', desc:'Soft quartz-pink tee in lightweight cotton, cut for a relaxed everyday fit.', price:40, cat:['tshirts']},
+  {id:'e11', type:'hoodie', color:'#05070a', name:'Eclipse Black Hoodie', desc:'Our flagship piece: ultra-heavyweight black hoodie with tonal crystal stitching.', price:120, cat:['hoodies','limited']}
 ];
 
 const categories = [
-  {name:'Hoodies', tag:'24 styles', icon:'icon-hoodie', a:'#63c6ec', b:'#1c86b3'},
-  {name:'T-Shirts', tag:'19 styles', icon:'icon-tshirt', a:'#9fdcf5', b:'#2fa9d9'},
-  {name:'Oversized Fits', tag:'Roomy & relaxed', icon:'icon-hoodie', a:'#4d616d', b:'#16232c'},
-  {name:'Limited Drops', tag:'Restocks rarely', icon:'icon-tshirt', a:'#1c86b3', b:'#05070a'}
+  {key:'hoodies', name:'Hoodies', tag:'24 styles', icon:'icon-hoodie', a:'#63c6ec', b:'#1c86b3'},
+  {key:'tshirts', name:'T-Shirts', tag:'19 styles', icon:'icon-tshirt', a:'#9fdcf5', b:'#2fa9d9'},
+  {key:'oversized', name:'Oversized Fits', tag:'Roomy & relaxed', icon:'icon-hoodie', a:'#4d616d', b:'#16232c'},
+  {key:'limited', name:'Limited Drops', tag:'Restocks rarely', icon:'icon-tshirt', a:'#1c86b3', b:'#05070a'}
 ];
+
+let cart = {}; // id -> {product, qty}
 
 /* ===================== HELPERS ===================== */
 function garmentSVG(type, color, size){
@@ -536,6 +654,7 @@ const dotsWrap = document.getElementById('sliderDots');
 trending.forEach((p,i)=>{
   const slide = document.createElement('div');
   slide.className = 'slide' + (i===0 ? ' active' : '');
+  slide.dataset.id = p.id;
   slide.innerHTML = `
     <div class="slide-art"><div class="glass-bubble">${garmentSVG(p.type,p.color,150)}</div></div>
     <div class="slide-info">
@@ -543,7 +662,7 @@ trending.forEach((p,i)=>{
       <h3>${p.name}</h3>
       <p class="desc">${p.desc}</p>
       <div class="price">$${p.price.toFixed(2)}</div>
-      <button class="btn-crystal add-to-cart">Add to Cart</button>
+      <button class="btn-crystal add-to-cart" data-id="${p.id}">Add to Cart</button>
     </div>`;
   sliderWrap.appendChild(slide);
 
@@ -587,13 +706,15 @@ const exclusiveGrid = document.getElementById('exclusiveGrid');
 exclusive.forEach(p=>{
   const card = document.createElement('div');
   card.className = 'card reveal';
+  card.dataset.id = p.id;
+  card.dataset.cat = p.cat.join(',');
   card.innerHTML = `
     <span class="tag excl">Exclusive</span>
     <div class="art"><div class="glass-bubble">${garmentSVG(p.type,p.color,90)}</div></div>
     <h4>${p.name}</h4>
     <p class="card-desc">${p.desc}</p>
     <div class="price">$${p.price.toFixed(2)}</div>
-    <button class="add-btn add-to-cart">Add to Cart</button>`;
+    <button class="add-btn add-to-cart" data-id="${p.id}">Add to Cart</button>`;
   exclusiveGrid.appendChild(card);
 });
 
@@ -611,15 +732,170 @@ categories.forEach(c=>{
       <h4>${c.name}</h4>
       <span>${c.tag}</span>
     </div>`;
-  card.addEventListener('click', ()=>showToast(`Browsing ${c.name}...`));
+  card.addEventListener('click', ()=>applyCategoryFilter(c.key, c.name));
   categoryGrid.appendChild(card);
 });
 
-/* ===================== ADD TO CART TOAST ===================== */
-document.addEventListener('click', (e)=>{
-  if(e.target.closest('.add-to-cart')){
-    showToast('Added to cart ✓');
+/* ===================== CATEGORY FILTERING ===================== */
+const filterBanner = document.getElementById('filterBanner');
+const filterLabel = document.getElementById('filterLabel');
+const allExclusiveCards = () => Array.from(exclusiveGrid.querySelectorAll('.card'));
+
+function applyCategoryFilter(key, label){
+  allExclusiveCards().forEach(card=>{
+    const cats = card.dataset.cat.split(',');
+    card.classList.toggle('filtered-out', !cats.includes(key));
+  });
+  filterLabel.textContent = label;
+  filterBanner.classList.add('show');
+  document.getElementById('exclusive').scrollIntoView({behavior:'smooth', block:'start'});
+}
+function clearCategoryFilter(){
+  allExclusiveCards().forEach(card=>card.classList.remove('filtered-out'));
+  filterBanner.classList.remove('show');
+}
+document.getElementById('clearFilter').addEventListener('click', clearCategoryFilter);
+document.querySelectorAll('[data-navcat]').forEach(link=>{
+  link.addEventListener('click', ()=>{
+    const key = link.dataset.navcat;
+    const cat = categories.find(c=>c.key===key);
+    if(cat) applyCategoryFilter(cat.key, cat.name);
+  });
+});
+
+/* ===================== CART ===================== */
+const allProducts = {};
+[...trending, ...exclusive].forEach(p=>allProducts[p.id]=p);
+
+const cartBadge = document.getElementById('cartBadge');
+const cartItemsEl = document.getElementById('cartItems');
+const cartEmptyEl = document.getElementById('cartEmpty');
+const cartTotalRow = document.getElementById('cartTotalRow');
+const cartTotalEl = document.getElementById('cartTotal');
+
+function addToCart(id, qty=1){
+  const product = allProducts[id];
+  if(!product) return;
+  if(cart[id]) cart[id].qty += qty;
+  else cart[id] = {product, qty};
+  renderCart();
+  showToast(`Added ${product.name} ✓`);
+}
+function removeFromCart(id){
+  delete cart[id];
+  renderCart();
+}
+function renderCart(){
+  const ids = Object.keys(cart);
+  const count = ids.reduce((sum,id)=>sum+cart[id].qty, 0);
+  cartBadge.textContent = count;
+  cartBadge.classList.toggle('zero', count===0);
+
+  if(ids.length===0){
+    cartItemsEl.innerHTML = '';
+    cartEmptyEl.classList.add('show');
+    cartTotalRow.classList.remove('show');
+    return;
   }
+  cartEmptyEl.classList.remove('show');
+  cartTotalRow.classList.add('show');
+
+  let total = 0;
+  cartItemsEl.innerHTML = ids.map(id=>{
+    const {product, qty} = cart[id];
+    total += product.price * qty;
+    return `<div class="cart-line">
+      <span class="cl-name">${product.name}</span>
+      <span class="cl-qty">x${qty}</span>
+      <span class="cl-remove" data-remove="${id}">Remove</span>
+    </div>`;
+  }).join('');
+  cartTotalEl.textContent = `$${total.toFixed(2)}`;
+}
+cartItemsEl.addEventListener('click', (e)=>{
+  const id = e.target.dataset.remove;
+  if(id) removeFromCart(id);
+});
+
+document.addEventListener('click', (e)=>{
+  const btn = e.target.closest('.add-to-cart');
+  if(btn){
+    e.stopPropagation();
+    addToCart(btn.dataset.id);
+  }
+});
+
+/* ===================== SEARCH ===================== */
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const allProductList = [...trending, ...exclusive];
+
+searchInput.addEventListener('input', ()=>{
+  const q = searchInput.value.trim().toLowerCase();
+  if(!q){ searchResults.innerHTML = ''; return; }
+  const matches = allProductList.filter(p=>p.name.toLowerCase().includes(q));
+  searchResults.innerHTML = matches.length
+    ? matches.map(p=>`<div class="sr-item" data-id="${p.id}"><span>${p.name}</span><span>$${p.price.toFixed(2)}</span></div>`).join('')
+    : `<div class="sr-empty">No matches for "${searchInput.value}"</div>`;
+});
+searchResults.addEventListener('click', (e)=>{
+  const row = e.target.closest('.sr-item');
+  if(row){
+    openModal(row.dataset.id);
+    document.querySelectorAll('.mini-pop').forEach(p=>p.classList.remove('open'));
+  }
+});
+
+/* ===================== PRODUCT MODAL ===================== */
+const modalOverlay = document.getElementById('modalOverlay');
+const modalBubble = document.getElementById('modalBubble');
+const modalBadge = document.getElementById('modalBadge');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalPrice = document.getElementById('modalPrice');
+const modalAddBtn = document.getElementById('modalAddBtn');
+const qtyValue = document.getElementById('qtyValue');
+let modalQty = 1;
+let modalProductId = null;
+
+function openModal(id){
+  const product = allProducts[id];
+  if(!product) return;
+  modalProductId = id;
+  modalQty = 1;
+  qtyValue.textContent = '1';
+  modalBubble.innerHTML = garmentSVG(product.type, product.color, 140);
+  if(product.badge){ modalBadge.textContent = product.badge; modalBadge.style.display='inline-block'; }
+  else modalBadge.style.display = 'none';
+  modalTitle.textContent = product.name;
+  modalDesc.textContent = product.desc;
+  modalPrice.textContent = `$${product.price.toFixed(2)}`;
+  modalOverlay.classList.add('open');
+}
+function closeModal(){ modalOverlay.classList.remove('open'); }
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', (e)=>{ if(e.target===modalOverlay) closeModal(); });
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+document.getElementById('qtyMinus').addEventListener('click', ()=>{
+  modalQty = Math.max(1, modalQty-1); qtyValue.textContent = modalQty;
+});
+document.getElementById('qtyPlus').addEventListener('click', ()=>{
+  modalQty += 1; qtyValue.textContent = modalQty;
+});
+modalAddBtn.addEventListener('click', ()=>{
+  addToCart(modalProductId, modalQty);
+  closeModal();
+});
+
+/* open modal when a product card/slide is clicked (but not its Add to Cart button) */
+document.addEventListener('click', (e)=>{
+  if(e.target.closest('.add-to-cart')) return;
+  const card = e.target.closest('.card[data-id]');
+  if(card){ openModal(card.dataset.id); return; }
+  const slide = e.target.closest('.slide[data-id]');
+  if(slide){ openModal(slide.dataset.id); return; }
 });
 
 /* ===================== HEADER MINI POPUPS ===================== */
@@ -638,6 +914,8 @@ wirePop('cartBtn','cartPop');
 wirePop('accountBtn','accountPop');
 document.addEventListener('click', ()=>document.querySelectorAll('.mini-pop').forEach(p=>p.classList.remove('open')));
 document.querySelectorAll('.mini-pop').forEach(p=>p.addEventListener('click', e=>e.stopPropagation()));
+
+renderCart();
 
 /* ===================== SCROLL REVEAL ===================== */
 const revealObserver = new IntersectionObserver((entries)=>{
